@@ -1,0 +1,48 @@
+{
+  "categories": [
+    {
+      "name": "哲理類",
+      "keys": [
+        { "key": "A", "radical": "日" },
+        { "key": "B", "radical": "月" },
+        { "key": "C", "radical": "金" },
+        { "key": "D", "radical": "木" },
+        { "key": "E", "radical": "水" },
+        { "key": "F", "radical": "火" },
+        { "key": "G", "radical": "土" }
+      ]
+    },
+    {
+      "name": "筆畫類",
+      "keys": [
+        { "key": "H", "radical": "竹" },
+        { "key": "I", "radical": "戈" },
+        { "key": "J", "radical": "十" },
+        { "key": "K", "radical": "大" },
+        { "key": "L", "radical": "中" },
+        { "key": "M", "radical": "一" },
+        { "key": "N", "radical": "弓" }
+      ]
+    },
+    {
+      "name": "人身類",
+      "keys": [
+        { "key": "O", "radical": "人" },
+        { "key": "P", "radical": "心" },
+        { "key": "Q", "radical": "手" },
+        { "key": "R", "radical": "口" }
+      ]
+    },
+    {
+      "name": "字形類",
+      "keys": [
+        { "key": "S", "radical": "尸" },
+        { "key": "T", "radical": "廿" },
+        { "key": "U", "radical": "山" },
+        { "key": "V", "radical": "女" },
+        { "key": "W", "radical": "田" },
+        { "key": "Y", "radical": "卜" }
+      ]
+    }
+  ]
+}
