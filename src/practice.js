@@ -11,10 +11,35 @@ function markVisited(lessonId, stageId) {
   save(VISITED_KEY, visited);
 }
 
-function formatMs(ms) {
-  if (!Number.isFinite(ms)) return '—';
-  return `${Math.round(ms)} ms`;
+function formatInt(n) {
+  if (!Number.isFinite(n)) return '—';
+  return String(Math.round(n));
 }
+
+function formatPct(p) {
+  if (!Number.isFinite(p)) return '—';
+  return `${Math.round(p)}%`;
+}
+
+function mean(arr) {
+  if (arr.length === 0) return NaN;
+  return arr.reduce((s, x) => s + x, 0) / arr.length;
+}
+
+function stdDev(arr) {
+  if (arr.length < 2) return NaN;
+  const m = mean(arr);
+  const variance = arr.reduce((s, x) => s + (x - m) ** 2, 0) / (arr.length - 1);
+  return Math.sqrt(variance);
+}
+
+// Monkeytype's kogasa function: smooth 0–100 from coefficient of variation.
+function kogasa(cv) {
+  return 100 * (1 - Math.tanh(cv + (cv ** 3) / 3 + (cv ** 5) / 5));
+}
+
+// Need enough per-second samples for the CV to be meaningful.
+const MIN_SECONDS_FOR_CONSISTENCY = 3;
 
 export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   const lesson = LESSONS[lessonId];
@@ -27,13 +52,21 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   const nextTarget = nextStageOf(lessonId, stageId);
   let cursorLine = 0;
   let cursorCol = 0;
-  let cellResponded = false;
-  let cellFirstTryCorrect = false;
-  let cellStart = 0;
   let hintShown = false;
   let finished = false;
 
-  const stats = { total: 0, firstTryCorrect: 0, responseSum: 0 };
+  // Monkeytype-style stats.
+  //  - correctChars: every correct keypress (advances cursor)
+  //  - incorrectChars: every wrong keypress (rejected, cursor stays)
+  //  - rawHistory: per-second count of *all* keypresses, for consistency CV
+  //  - timer pauses when window is hidden or blurred (AFK)
+  const stats = { correctChars: 0, incorrectChars: 0 };
+  let secondCounter = 0;
+  let rawHistory = [];
+  let testStartedAt = 0;
+  let totalPausedMs = 0;
+  let pauseStartedAt = 0;
+  let secondInterval = null;
 
   root.innerHTML = `
     <section class="practice">
@@ -46,8 +79,10 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
       </header>
       <div class="stats">
         <span>進度 <strong data-stat="progress">0 / 0</strong></span>
-        <span>首次正確率 <strong data-stat="accuracy">—</strong></span>
-        <span>平均反應 <strong data-stat="avg">—</strong></span>
+        <span>速度 <strong data-stat="cpm">—</strong></span>
+        <span>原始 <strong data-stat="raw">—</strong></span>
+        <span>正確率 <strong data-stat="accuracy">—</strong></span>
+        <span>穩定度 <strong data-stat="consistency">—</strong></span>
       </div>
       <div class="sequence" data-sequence></div>
       <input
@@ -73,8 +108,10 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
           <h3>練習完成</h3>
           <div class="finish-stats">
             <div><span>題數</span><strong data-finish-total>—</strong></div>
-            <div><span>首次正確率</span><strong data-finish-acc>—</strong></div>
-            <div><span>平均反應</span><strong data-finish-avg>—</strong></div>
+            <div><span>速度</span><strong data-finish-cpm>—</strong></div>
+            <div><span>原始</span><strong data-finish-raw>—</strong></div>
+            <div><span>正確率</span><strong data-finish-acc>—</strong></div>
+            <div><span>穩定度</span><strong data-finish-consistency>—</strong></div>
           </div>
           <div class="finish-buttons">
             <button type="button" data-action="replay">再來一輪 <span class="kbd">R</span></button>
@@ -91,12 +128,16 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   const hintEl = root.querySelector('[data-hint]');
   const hintKeyEl = root.querySelector('[data-hint-key]');
   const statProgress = root.querySelector('[data-stat="progress"]');
+  const statCpm = root.querySelector('[data-stat="cpm"]');
+  const statRaw = root.querySelector('[data-stat="raw"]');
   const statAcc = root.querySelector('[data-stat="accuracy"]');
-  const statAvg = root.querySelector('[data-stat="avg"]');
+  const statConsistency = root.querySelector('[data-stat="consistency"]');
   const finishEl = root.querySelector('[data-finish]');
   const finishTotal = root.querySelector('[data-finish-total]');
+  const finishCpm = root.querySelector('[data-finish-cpm]');
+  const finishRaw = root.querySelector('[data-finish-raw]');
   const finishAcc = root.querySelector('[data-finish-acc]');
-  const finishAvg = root.querySelector('[data-finish-avg]');
+  const finishConsistency = root.querySelector('[data-finish-consistency]');
   const regenBtn = root.querySelector('[data-action="regenerate"]');
   const newBatchBtn = root.querySelector('[data-action="new-batch"]');
   const captureInput = root.querySelector('[data-capture-input]');
@@ -137,15 +178,35 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     return seq.lines.reduce((n, line) => n + line.length, 0);
   }
 
-  function updateStats() {
-    statProgress.textContent = `${stats.total} / ${totalChars()}`;
-    if (stats.total === 0) {
-      statAcc.textContent = '—';
-      statAvg.textContent = '—';
-    } else {
-      statAcc.textContent = `${Math.round((stats.firstTryCorrect / stats.total) * 100)}%`;
-      statAvg.textContent = formatMs(stats.responseSum / stats.total);
+  function getElapsedSeconds() {
+    if (!testStartedAt) return 0;
+    const now = performance.now();
+    let elapsed = now - testStartedAt - totalPausedMs;
+    if (pauseStartedAt) elapsed -= (now - pauseStartedAt);
+    return Math.max(0, elapsed / 1000);
+  }
+
+  function computeStats() {
+    const elapsed = getElapsedSeconds();
+    const total = stats.correctChars + stats.incorrectChars;
+    const cpm = elapsed > 0 ? (stats.correctChars * 60) / elapsed : NaN;
+    const rawCpm = elapsed > 0 ? (total * 60) / elapsed : NaN;
+    const accuracy = total > 0 ? (stats.correctChars / total) * 100 : NaN;
+    let cons = NaN;
+    if (rawHistory.length >= MIN_SECONDS_FOR_CONSISTENCY) {
+      const m = mean(rawHistory);
+      if (m > 0) cons = kogasa(stdDev(rawHistory) / m);
     }
+    return { cpm, rawCpm, accuracy, consistency: cons };
+  }
+
+  function updateStats() {
+    statProgress.textContent = `${stats.correctChars} / ${totalChars()}`;
+    const s = computeStats();
+    statCpm.textContent = formatInt(s.cpm);
+    statRaw.textContent = formatInt(s.rawCpm);
+    statAcc.textContent = formatPct(s.accuracy);
+    statConsistency.textContent = formatPct(s.consistency);
   }
 
   function setCursorClass() {
@@ -193,11 +254,48 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   }
 
   function resetCellState() {
-    cellResponded = false;
-    cellFirstTryCorrect = false;
-    cellStart = performance.now();
     hintShown = false;
     updateHintForCursor();
+  }
+
+  function tickSecond() {
+    rawHistory.push(secondCounter);
+    secondCounter = 0;
+  }
+
+  function startSecondInterval() {
+    if (secondInterval) return;
+    secondInterval = setInterval(tickSecond, 1000);
+  }
+
+  function stopSecondInterval() {
+    if (secondInterval) {
+      clearInterval(secondInterval);
+      secondInterval = null;
+    }
+  }
+
+  function ensureTestStarted() {
+    if (testStartedAt || finished) return;
+    testStartedAt = performance.now();
+    startSecondInterval();
+  }
+
+  function pauseRun() {
+    if (!testStartedAt || finished || pauseStartedAt) return;
+    pauseStartedAt = performance.now();
+    stopSecondInterval();
+  }
+
+  function resumeRun() {
+    if (!testStartedAt || finished || !pauseStartedAt) return;
+    totalPausedMs += performance.now() - pauseStartedAt;
+    pauseStartedAt = 0;
+    startSecondInterval();
+  }
+
+  function stopAllTimers() {
+    stopSecondInterval();
   }
 
   function advanceCursor() {
@@ -209,6 +307,7 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
       cursorCol = 0;
     } else {
       finished = true;
+      stopAllTimers();
       showFinish();
       return;
     }
@@ -217,9 +316,12 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   }
 
   function showFinish() {
-    finishTotal.textContent = stats.total;
-    finishAcc.textContent = stats.total ? `${Math.round((stats.firstTryCorrect / stats.total) * 100)}%` : '—';
-    finishAvg.textContent = stats.total ? formatMs(stats.responseSum / stats.total) : '—';
+    const s = computeStats();
+    finishTotal.textContent = stats.correctChars;
+    finishCpm.textContent = formatInt(s.cpm);
+    finishRaw.textContent = formatInt(s.rawCpm);
+    finishAcc.textContent = formatPct(s.accuracy);
+    finishConsistency.textContent = formatPct(s.consistency);
     finishEl.hidden = false;
   }
 
@@ -236,9 +338,14 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     cursorLine = 0;
     cursorCol = 0;
     finished = false;
-    stats.total = 0;
-    stats.firstTryCorrect = 0;
-    stats.responseSum = 0;
+    stats.correctChars = 0;
+    stats.incorrectChars = 0;
+    secondCounter = 0;
+    rawHistory = [];
+    testStartedAt = 0;
+    totalPausedMs = 0;
+    pauseStartedAt = 0;
+    stopAllTimers();
     renderSequence();
     window.scrollTo(0, 0);
     setCursorClass();
@@ -252,24 +359,21 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     const item = currentItem();
     if (!item) return;
 
-    if (!cellResponded) {
-      cellResponded = true;
-      const dt = performance.now() - cellStart;
-      stats.responseSum += dt;
-      cellFirstTryCorrect = key === item.key;
-    }
+    ensureTestStarted();
+    secondCounter++;
 
     if (key === item.key) {
+      stats.correctChars++;
       const cell = currentCell();
       cell.classList.remove('current', 'wrong-flash');
       cell.classList.add('correct');
-      stats.total++;
-      if (cellFirstTryCorrect) stats.firstTryCorrect++;
       updateStats();
       advanceCursor();
     } else {
+      stats.incorrectChars++;
       flashWrong();
       playError();
+      updateStats();
     }
   }
 
@@ -329,6 +433,17 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     updateHintForCursor();
   }
 
+  function onVisibilityChange() {
+    if (document.visibilityState === 'hidden') pauseRun();
+    else resumeRun();
+  }
+  function onWindowBlur() {
+    pauseRun();
+  }
+  function onWindowFocus() {
+    resumeRun();
+  }
+
   function onRegenerate() {
     if (!seq.canRegenerate) return;
     seq = buildSequence({ lessonId, stageId, settings });
@@ -336,7 +451,11 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   }
 
   function cleanup() {
+    stopAllTimers();
     window.removeEventListener('keydown', onKeyDown);
+    window.removeEventListener('blur', onWindowBlur);
+    window.removeEventListener('focus', onWindowFocus);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
     if (window.visualViewport) {
       window.visualViewport.removeEventListener('resize', onViewportResize);
     }
@@ -364,6 +483,9 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   captureInput.addEventListener('beforeinput', onCaptureBeforeInput);
   captureInput.addEventListener('input', onCaptureInput);
   window.addEventListener('keydown', onKeyDown);
+  window.addEventListener('blur', onWindowBlur);
+  window.addEventListener('focus', onWindowFocus);
+  document.addEventListener('visibilitychange', onVisibilityChange);
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', onViewportResize);
   }
