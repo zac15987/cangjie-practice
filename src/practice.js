@@ -50,12 +50,24 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
         <span>平均反應 <strong data-stat="avg">—</strong></span>
       </div>
       <div class="sequence" data-sequence></div>
+      <input
+        class="capture-input"
+        data-capture-input
+        type="password"
+        inputmode="text"
+        autocomplete="new-password"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-label="輸入答案"
+        tabindex="-1"
+      />
       <div class="hint-row" data-hint hidden>對應鍵：<strong data-hint-key></strong></div>
       <div class="controls">
         <button type="button" data-action="hint">顯示提示</button>
         <button type="button" data-action="regenerate" ${seq.canRegenerate ? '' : 'disabled'}>換新隨機批次</button>
       </div>
-      <p class="kbd-hint">按下對應的英文字母鍵（A – Y）依序作答</p>
+      <p class="kbd-hint">按下對應的英文字母鍵（A – Y）依序作答；手機請點擊字元區開啟鍵盤</p>
       <div class="finish-overlay" data-finish hidden>
         <div class="finish-card">
           <h3>練習完成</h3>
@@ -87,6 +99,7 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   const finishAvg = root.querySelector('[data-finish-avg]');
   const regenBtn = root.querySelector('[data-action="regenerate"]');
   const newBatchBtn = root.querySelector('[data-action="new-batch"]');
+  const captureInput = root.querySelector('[data-capture-input]');
 
   let cellMatrix = [];
 
@@ -205,29 +218,8 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     finishEl.hidden = true;
   }
 
-  function onKeyDown(e) {
-    if (e.ctrlKey || e.metaKey || e.altKey) return;
-
-    if (finished) {
-      if (e.key === 'r' || e.key === 'R') { e.preventDefault(); startRun(); return; }
-      if (e.key === ' ') {
-        e.preventDefault();
-        if (nextTarget) navigate(nextTarget);
-        return;
-      }
-      if (e.key === 'Escape') { e.preventDefault(); exit(); return; }
-      if ((e.key === 'f' || e.key === 'F') && seq.canRegenerate) {
-        e.preventDefault();
-        onRegenerate();
-        return;
-      }
-      return;
-    }
-
-    const key = e.key.toUpperCase();
-    if (!/^[A-Z]$/.test(key)) return;
-    e.preventDefault();
-
+  function processKey(key) {
+    if (finished) return;
     const item = currentItem();
     if (!item) return;
 
@@ -250,6 +242,56 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
       flashWrong();
       playError();
     }
+  }
+
+  function onKeyDown(e) {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+    if (finished) {
+      if (e.key === 'r' || e.key === 'R') { e.preventDefault(); startRun(); return; }
+      if (e.key === ' ') {
+        e.preventDefault();
+        if (nextTarget) navigate(nextTarget);
+        return;
+      }
+      if (e.key === 'Escape') { e.preventDefault(); exit(); return; }
+      if ((e.key === 'f' || e.key === 'F') && seq.canRegenerate) {
+        e.preventDefault();
+        onRegenerate();
+        return;
+      }
+      return;
+    }
+
+    const key = e.key.toUpperCase();
+    if (!/^[A-Z]$/.test(key)) return;
+    if (document.activeElement === captureInput) return;
+    e.preventDefault();
+    processKey(key);
+  }
+
+  function onCaptureBeforeInput(e) {
+    e.preventDefault();
+    const data = e.data || '';
+    for (const ch of data) {
+      const k = ch.toUpperCase();
+      if (/^[A-Z]$/.test(k)) processKey(k);
+    }
+  }
+
+  function onCaptureInput() {
+    const val = captureInput.value;
+    captureInput.value = '';
+    if (!val) return;
+    for (const ch of val) {
+      const k = ch.toUpperCase();
+      if (/^[A-Z]$/.test(k)) processKey(k);
+    }
+  }
+
+  function focusCapture() {
+    if (finished) return;
+    captureInput.focus({ preventScroll: true });
   }
 
   function onHint() {
@@ -281,11 +323,15 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   root.querySelector('.back-btn').addEventListener('click', exit);
   root.querySelector('[data-action="hint"]').addEventListener('click', onHint);
   regenBtn.addEventListener('click', onRegenerate);
-  root.querySelector('[data-action="replay"]').addEventListener('click', () => startRun());
+  root.querySelector('[data-action="replay"]').addEventListener('click', () => { startRun(); focusCapture(); });
   nextBtn.addEventListener('click', () => { if (nextTarget) navigate(nextTarget); });
-  newBatchBtn.addEventListener('click', onRegenerate);
+  newBatchBtn.addEventListener('click', () => { onRegenerate(); focusCapture(); });
   root.querySelector('[data-action="back"]').addEventListener('click', exit);
+  sequenceEl.addEventListener('click', focusCapture);
+  captureInput.addEventListener('beforeinput', onCaptureBeforeInput);
+  captureInput.addEventListener('input', onCaptureInput);
   window.addEventListener('keydown', onKeyDown);
 
   startRun();
+  focusCapture();
 }
