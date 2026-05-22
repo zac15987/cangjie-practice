@@ -52,6 +52,14 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
 
 .menu-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 1.5rem; }
 
+.menu-version {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
 .lesson-block {
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -123,7 +131,8 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
 
 .stats {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
   padding: 0.75rem 1rem;
   background: var(--bg-elev);
   border: 1px solid var(--border);
@@ -145,7 +154,23 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
   min-height: 200px;
   margin-bottom: 1.25rem;
   user-select: none;
+  cursor: text;
 }
+
+.capture-input {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: transparent;
+}
+.capture-input:focus { outline: none; }
 
 .seq-line {
   display: flex;
@@ -249,6 +274,7 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
 }
 .finish-stats {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   gap: 1rem;
   margin-bottom: 1.5rem;

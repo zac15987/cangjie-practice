@@ -40,6 +40,7 @@ export function mountMenu(root, { onSelect, onOpenSettings }) {
       </header>
       <p class="menu-intro">選擇分組與練習關卡。所有關卡自由選，無解鎖限制。</p>
       ${lessonBlocks}
+      <footer class="menu-version">v${import.meta.env.VITE_APP_VERSION}</footer>
     </section>
   `;
 
