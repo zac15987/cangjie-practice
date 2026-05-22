@@ -152,6 +152,34 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     const cell = currentCell();
     if (cell) cell.classList.add('current');
     updateHintForCursor();
+    scrollCursorIntoView();
+  }
+
+  function scrollCursorIntoView() {
+    const cell = currentCell();
+    if (!cell) return;
+    const rect = cell.getBoundingClientRect();
+    const vv = window.visualViewport;
+    const viewTop = vv ? vv.offsetTop : 0;
+    const viewBottom = vv ? vv.offsetTop + vv.height : window.innerHeight;
+    const margin = 100;
+    if (rect.bottom > viewBottom - margin) {
+      window.scrollBy({ top: rect.bottom - (viewBottom - margin), behavior: 'smooth' });
+    } else if (rect.top < viewTop + margin) {
+      window.scrollBy({ top: rect.top - (viewTop + margin), behavior: 'smooth' });
+    }
+  }
+
+  function adjustBottomPadding() {
+    const vv = window.visualViewport;
+    if (!vv) return;
+    const keyboardHeight = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+    document.body.style.paddingBottom = keyboardHeight > 0 ? keyboardHeight + 'px' : '';
+  }
+
+  function onViewportResize() {
+    adjustBottomPadding();
+    if (!finished) scrollCursorIntoView();
   }
 
   function updateHintForCursor() {
@@ -212,6 +240,7 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
     stats.firstTryCorrect = 0;
     stats.responseSum = 0;
     renderSequence();
+    window.scrollTo(0, 0);
     setCursorClass();
     resetCellState();
     updateStats();
@@ -308,6 +337,10 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
 
   function cleanup() {
     window.removeEventListener('keydown', onKeyDown);
+    if (window.visualViewport) {
+      window.visualViewport.removeEventListener('resize', onViewportResize);
+    }
+    document.body.style.paddingBottom = '';
   }
   function exit() {
     cleanup();
@@ -331,6 +364,9 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   captureInput.addEventListener('beforeinput', onCaptureBeforeInput);
   captureInput.addEventListener('input', onCaptureInput);
   window.addEventListener('keydown', onKeyDown);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', onViewportResize);
+  }
 
   startRun();
   focusCapture();
