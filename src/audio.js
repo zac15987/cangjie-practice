@@ -13,14 +13,18 @@ function getCtx() {
 export function playError() {
   const ac = getCtx();
   if (!ac) return;
-  const osc = ac.createOscillator();
-  const gain = ac.createGain();
-  osc.type = 'square';
-  osc.frequency.value = 180;
-  gain.gain.setValueAtTime(0.0001, ac.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.15, ac.currentTime + 0.01);
-  gain.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + 0.18);
-  osc.connect(gain).connect(ac.destination);
-  osc.start();
-  osc.stop(ac.currentTime + 0.2);
+  const t0 = ac.currentTime;
+  for (const [freq, delay] of [[500, 0], [300, 0.12]]) {
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    const start = t0 + delay;
+    gain.gain.setValueAtTime(0.0001, start);
+    gain.gain.exponentialRampToValueAtTime(1.0, start + 0.01);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + 0.1);
+    osc.connect(gain).connect(ac.destination);
+    osc.start(start);
+    osc.stop(start + 0.12);
+  }
 }
