@@ -54,6 +54,10 @@ Visited is marked the moment the practice screen mounts (not on completion). Set
 
 `src/data/radicals.json` is the single source of truth for radicals — 4 categories, 24 characters (X is reserved for special chars, Z for duplicate selection; neither is in scope). The key-to-radical mapping was verified against Wikipedia and should not be changed casually.
 
+### Versioning
+
+`package.json#version` is the single source of truth for the app version. `vite.config.js` imports `package.json` at build time and injects the version string via `define` as `import.meta.env.VITE_APP_VERSION` — only the version string is inlined into the client bundle, not the rest of `package.json`. The Menu screen reads this value and renders it in the `.menu-version` footer. To bump the version, edit `package.json#version` only; do not hardcode the version anywhere in `src/`.
+
 ## Conventions
 
 - UI copy is in Traditional Chinese (zh-Hant); code, identifiers, and CLAUDE.md itself are in English
