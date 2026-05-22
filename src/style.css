@@ -52,6 +52,14 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
 
 .menu-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 1.5rem; }
 
+.menu-version {
+  margin-top: 2rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
 .lesson-block {
   background: var(--bg-elev);
   border: 1px solid var(--border);
