@@ -1,0 +1,1485 @@
+{
+  "A": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-a0-1.svg",
+        "Cjem-a0-2.svg",
+        "Cjem-a0-3.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-a1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-a2-1.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-a3-1.svg",
+        "Cjem-a3-2.svg",
+        "Cjem-a3-3.svg",
+        "Cjem-a3-4.svg",
+        "Cjem-a3-5.svg"
+      ]
+    }
+  ],
+  "B": [
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-b1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-b2-1.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-b3-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-b6-1.svg",
+        "Cjem-b6-2.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-b7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-b8-1.svg",
+        "Cjem-b8-2.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-b9-1.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-b10-1.svg"
+      ]
+    },
+    {
+      "aux": 11,
+      "examples": [
+        "Cjem-b11-1.svg",
+        "Cjem-b11-2.svg",
+        "Cjem-b11-3.svg",
+        "Cjem-b11-4.svg",
+        "Cjem-b11-5.svg"
+      ]
+    },
+    {
+      "aux": 12,
+      "examples": [
+        "Cjem-b12-1.svg"
+      ]
+    },
+    {
+      "aux": 13,
+      "examples": [
+        "Cjem-b13-1.svg",
+        "Cjem-b13-2.svg"
+      ]
+    },
+    {
+      "aux": 14,
+      "examples": [
+        "Cjem-b14-1.svg"
+      ]
+    },
+    {
+      "aux": 15,
+      "examples": [
+        "Cjem-b15-1.svg"
+      ]
+    },
+    {
+      "aux": 16,
+      "examples": [
+        "Cjem-b16-1.svg"
+      ]
+    },
+    {
+      "aux": 17,
+      "examples": [
+        "Cjem-b17-1.svg",
+        "Cjem-b17-2.svg",
+        "Cjem-b17-3.svg",
+        "Cjem-b17-4.svg"
+      ]
+    },
+    {
+      "aux": 19,
+      "examples": [
+        "Cjem-b19-1.svg",
+        "Cjem-b19-2.svg",
+        "Cjem-b19-3.svg",
+        "Cjem-b19-4.svg"
+      ]
+    },
+    {
+      "aux": 20,
+      "examples": [
+        "Cjem-b20-1.svg"
+      ]
+    }
+  ],
+  "C": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-c0-1.svg",
+        "Cjem-c0-2.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-c1-1.svg",
+        "Cjem-c1-2.svg",
+        "Cjem-c1-3.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-c2-1.svg",
+        "Cjem-c2-2.svg",
+        "Cjem-c2-3.svg",
+        "Cjem-c2-4.svg",
+        "Cjem-c2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-c3-1.svg",
+        "Cjem-c3-2.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-c4-1.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-c5-1.svg",
+        "Cjem-c5-2.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-c6-1.svg",
+        "Cjem-c6-2.svg",
+        "Cjem-c6-3.svg",
+        "Cjem-c6-4.svg",
+        "Cjem-c6-5.svg"
+      ]
+    }
+  ],
+  "D": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-d0-1.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-d1-1.svg",
+        "Cjem-d1-2.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-d2-2.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-d3-1.svg",
+        "Cjem-d3-2.svg",
+        "Cjem-d3-3.svg",
+        "Cjem-d3-4.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-d4-1.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-d5-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-d6-1.svg",
+        "Cjem-d6-2.svg",
+        "Cjem-d6-3.svg",
+        "Cjem-d6-4.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-d7-1.svg"
+      ]
+    }
+  ],
+  "E": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-e0-1.svg",
+        "Cjem-e0-2.svg",
+        "Cjem-e0-3.svg",
+        "Cjem-e0-4.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-e1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-e2-1.svg",
+        "Cjem-e2-2.svg",
+        "Cjem-e2-3.svg",
+        "Cjem-e2-4.svg",
+        "Cjem-e2-5.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-e4-1.svg",
+        "Cjem-e4-2.svg",
+        "Cjem-e4-3.svg",
+        "Cjem-e4-4.svg",
+        "Cjem-e4-5.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-e6-1.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-e7-1.svg",
+        "Cjem-e7-2.svg",
+        "Cjem-e7-3.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-e8-1.svg"
+      ]
+    }
+  ],
+  "F": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-f0-1.svg",
+        "Cjem-f0-2.svg",
+        "Cjem-f0-3.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-f1-1.svg",
+        "Cjem-f1-2.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-f2-1.svg",
+        "Cjem-f2-2.svg",
+        "Cjem-f2-3.svg",
+        "Cjem-f2-4.svg",
+        "Cjem-f2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-f3-2.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-f4-1.svg",
+        "Cjem-f4-2.svg",
+        "Cjem-f4-3.svg",
+        "Cjem-f4-4.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-f5-1.svg",
+        "Cjem-f5-2.svg",
+        "Cjem-f5-5.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-f6-1.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-f7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-f8-1.svg",
+        "Cjem-f8-2.svg",
+        "Cjem-f8-3.svg",
+        "Cjem-f8-4.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-f9-1.svg"
+      ]
+    }
+  ],
+  "G": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-g0-1.svg",
+        "Cjem-g0-2.svg",
+        "Cjem-g0-3.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-g1-1.svg",
+        "Cjem-g1-2.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-g2-1.svg",
+        "Cjem-g2-2.svg",
+        "Cjem-g2-3.svg",
+        "Cjem-g2-4.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-g3-1.svg"
+      ]
+    }
+  ],
+  "H": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-h0-1.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-h1-1.svg",
+        "Cjem-h1-2.svg",
+        "Cjem-h1-3.svg",
+        "Cjem-h1-4.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-h2-1.svg",
+        "Cjem-h2-2.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-h3-1.svg",
+        "Cjem-h3-2.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-h5-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-h6-1.svg",
+        "Cjem-h6-2.svg",
+        "Cjem-h6-3.svg",
+        "Cjem-h6-4.svg",
+        "Cjem-h6-5.svg"
+      ]
+    }
+  ],
+  "I": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-i0-1.svg",
+        "Cjem-i0-2.svg",
+        "Cjem-i0-3.svg",
+        "Cjem-i0-4.svg",
+        "Cjem-i0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-i1-1.svg",
+        "Cjem-i1-3.svg",
+        "Cjem-i1-4.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-i2-1.svg",
+        "Cjem-i2-2.svg",
+        "Cjem-i2-3.svg",
+        "Cjem-i2-4.svg",
+        "Cjem-i2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-i3-1.svg",
+        "Cjem-i3-2.svg",
+        "Cjem-i3-3.svg",
+        "Cjem-i3-4.svg",
+        "Cjem-i3-5.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-i4-1.svg",
+        "Cjem-i4-2.svg"
+      ]
+    }
+  ],
+  "J": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-j0-1.svg",
+        "Cjem-j0-2.svg",
+        "Cjem-j0-3.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-j1-1.svg",
+        "Cjem-j1-2.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-j2-1.svg",
+        "Cjem-j2-2.svg",
+        "Cjem-j2-3.svg",
+        "Cjem-j2-4.svg",
+        "Cjem-j2-5.svg"
+      ]
+    }
+  ],
+  "K": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-k0-1.svg",
+        "Cjem-k0-2.svg",
+        "Cjem-k0-3.svg",
+        "Cjem-k0-4.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-k1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-k2-1.svg",
+        "Cjem-k2-2.svg",
+        "Cjem-k2-3.svg",
+        "Cjem-k2-4.svg",
+        "Cjem-k2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-k3-1.svg",
+        "Cjem-k3-2.svg",
+        "Cjem-k3-3.svg",
+        "Cjem-k3-4.svg",
+        "Cjem-k3-5.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-k4-1.svg",
+        "Cjem-k4-2.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-k5-1.svg",
+        "Cjem-k5-2.svg",
+        "Cjem-k5-3.svg"
+      ]
+    }
+  ],
+  "L": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-l0-1.svg",
+        "Cjem-l0-2.svg",
+        "Cjem-l0-3.svg",
+        "Cjem-l0-4.svg",
+        "Cjem-l0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-l1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-l2-1.svg",
+        "Cjem-l2-2.svg",
+        "Cjem-l2-3.svg",
+        "Cjem-l2-4.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-l3-1.svg",
+        "Cjem-l3-2.svg",
+        "Cjem-l3-3.svg",
+        "Cjem-l3-4.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-l4-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-l6-1.svg",
+        "Cjem-l6-2.svg",
+        "Cjem-l6-3.svg",
+        "Cjem-l6-4.svg",
+        "Cjem-l6-5.svg"
+      ]
+    }
+  ],
+  "M": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-m0-1.svg",
+        "Cjem-m0-2.svg",
+        "Cjem-m0-3.svg",
+        "Cjem-m0-4.svg",
+        "Cjem-m0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-m1-1.svg",
+        "Cjem-m1-3.svg",
+        "Cjem-m1-4.svg",
+        "Cjem-m1-6.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-m2-1.svg",
+        "Cjem-m2-2.svg",
+        "Cjem-m2-3.svg",
+        "Cjem-m2-4.svg",
+        "Cjem-m2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-m3-1.svg",
+        "Cjem-m3-2.svg",
+        "Cjem-m3-3.svg",
+        "Cjem-m3-4.svg",
+        "Cjem-m3-5.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-m4-1.svg",
+        "Cjem-m4-2.svg",
+        "Cjem-m4-3.svg",
+        "Cjem-m4-4.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-m5-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-m6-1.svg"
+      ]
+    }
+  ],
+  "N": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-n0-1.svg",
+        "Cjem-n0-2.svg",
+        "Cjem-n0-3.svg",
+        "Cjem-n0-4.svg",
+        "Cjem-n0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-n1-1.svg",
+        "Cjem-n1-2.svg",
+        "Cjem-n1-3.svg",
+        "Cjem-n1-4.svg",
+        "Cjem-n1-5.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-n2-1.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-n3-1.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-n4-1.svg",
+        "Cjem-n4-2.svg",
+        "Cjem-n4-3.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-n5-1.svg",
+        "Cjem-n5-2.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-n7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-n8-1.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-n9-1.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-n10-1.svg",
+        "Cjem-n10-2.svg"
+      ]
+    },
+    {
+      "aux": 11,
+      "examples": [
+        "Cjem-n11-1.svg",
+        "Cjem-n11-2.svg"
+      ]
+    },
+    {
+      "aux": 12,
+      "examples": [
+        "Cjem-n12-1.svg"
+      ]
+    }
+  ],
+  "O": [
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-o1-1.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-o2-1.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-o3-1.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-o4-1.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-o5-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-o6-1.svg",
+        "Cjem-o6-2.svg",
+        "Cjem-o6-3.svg",
+        "Cjem-o6-4.svg",
+        "Cjem-o6-5.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-o7-1.svg",
+        "Cjem-o7-3.svg",
+        "Cjem-o7-4.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-o8-1.svg",
+        "Cjem-o8-3.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-o9-1.svg",
+        "Cjem-o9-2.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-o10-1.svg",
+        "Cjem-o10-2.svg",
+        "Cjem-o10-3.svg"
+      ]
+    },
+    {
+      "aux": 11,
+      "examples": [
+        "Cjem-o11-1.svg",
+        "Cjem-o11-3.svg"
+      ]
+    },
+    {
+      "aux": 12,
+      "examples": [
+        "Cjem-o12-1.svg",
+        "Cjem-o12-2.svg"
+      ]
+    },
+    {
+      "aux": 14,
+      "examples": [
+        "Cjem-o14-1.svg"
+      ]
+    }
+  ],
+  "P": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-p0-1.svg",
+        "Cjem-p0-2.svg",
+        "Cjem-p0-3.svg",
+        "Cjem-p0-4.svg",
+        "Cjem-p0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-p1-1.svg",
+        "Cjem-p1-2.svg",
+        "Cjem-p1-3.svg",
+        "Cjem-p1-4.svg",
+        "Cjem-p1-5.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-p2-1.svg",
+        "Cjem-p2-2.svg",
+        "Cjem-p2-3.svg",
+        "Cjem-p2-4.svg",
+        "Cjem-p2-5.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-p4-1.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-p5-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-p6-1.svg",
+        "Cjem-p6-2.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-p9-1.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-p10-1.svg",
+        "Cjem-p10-2.svg",
+        "Cjem-p10-3.svg"
+      ]
+    },
+    {
+      "aux": 11,
+      "examples": [
+        "Cjem-p11-1.svg"
+      ]
+    },
+    {
+      "aux": 12,
+      "examples": [
+        "Cjem-p12-1.svg"
+      ]
+    },
+    {
+      "aux": 13,
+      "examples": [
+        "Cjem-p13-1.svg",
+        "Cjem-p13-2.svg",
+        "Cjem-p13-3.svg",
+        "Cjem-p13-4.svg"
+      ]
+    },
+    {
+      "aux": 14,
+      "examples": [
+        "Cjem-p14-1.svg"
+      ]
+    },
+    {
+      "aux": 15,
+      "examples": [
+        "Cjem-p15-2.svg",
+        "Cjem-p15-3.svg"
+      ]
+    },
+    {
+      "aux": 16,
+      "examples": [
+        "Cjem-p16-1.svg",
+        "Cjem-p16-2.svg"
+      ]
+    },
+    {
+      "aux": 17,
+      "examples": [
+        "Cjem-p17-1.svg"
+      ]
+    }
+  ],
+  "Q": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-q0-1.svg",
+        "Cjem-q0-2.svg",
+        "Cjem-q0-3.svg",
+        "Cjem-q0-4.svg",
+        "Cjem-q0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-q1-1.svg",
+        "Cjem-q1-2.svg",
+        "Cjem-q1-3.svg",
+        "Cjem-q1-4.svg",
+        "Cjem-q1-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-q3-1.svg",
+        "Cjem-q3-2.svg",
+        "Cjem-q3-3.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-q4-1.svg",
+        "Cjem-q4-2.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-q5-1.svg",
+        "Cjem-q5-2.svg",
+        "Cjem-q5-3.svg",
+        "Cjem-q5-4.svg",
+        "Cjem-q5-5.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-q7-1.svg",
+        "Cjem-q7-2.svg",
+        "Cjem-q7-3.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-q8-1.svg",
+        "Cjem-q8-2.svg"
+      ]
+    }
+  ],
+  "R": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-r0-1.svg",
+        "Cjem-r0-2.svg",
+        "Cjem-r0-3.svg",
+        "Cjem-r0-4.svg",
+        "Cjem-r0-5.svg"
+      ]
+    }
+  ],
+  "S": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-s0-1.svg",
+        "Cjem-s0-2.svg",
+        "Cjem-s0-3.svg",
+        "Cjem-s0-4.svg",
+        "Cjem-s0-5.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-s2-1.svg",
+        "Cjem-s2-2.svg",
+        "Cjem-s2-3.svg",
+        "Cjem-s2-4.svg",
+        "Cjem-s2-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-s3-1.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-s4-1.svg",
+        "Cjem-s4-2.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-s5-1.svg",
+        "Cjem-s5-2.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-s6-1.svg",
+        "Cjem-s6-2.svg",
+        "Cjem-s6-3.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-s7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-s8-1.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-s9-1.svg",
+        "Cjem-s9-2.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-s10-1.svg",
+        "Cjem-s10-2.svg",
+        "Cjem-s10-3.svg"
+      ]
+    }
+  ],
+  "T": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-t0-1.svg",
+        "Cjem-t0-2.svg",
+        "Cjem-t0-3.svg",
+        "Cjem-t0-4.svg",
+        "Cjem-t0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-t1-1.svg",
+        "Cjem-t1-2.svg",
+        "Cjem-t1-3.svg",
+        "Cjem-t1-4.svg",
+        "Cjem-t1-5.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-t3-1.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-t5-1.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-t7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-t8-1.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-t9-1.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-t10-1.svg",
+        "Cjem-t10-2.svg",
+        "Cjem-t10-3.svg"
+      ]
+    },
+    {
+      "aux": 11,
+      "examples": [
+        "Cjem-t11-1.svg",
+        "Cjem-t11-2.svg"
+      ]
+    },
+    {
+      "aux": 12,
+      "examples": [
+        "Cjem-t12-1.svg",
+        "Cjem-t12-2.svg",
+        "Cjem-t12-3.svg",
+        "Cjem-t12-4.svg"
+      ]
+    },
+    {
+      "aux": 13,
+      "examples": [
+        "Cjem-t13-1.svg",
+        "Cjem-t13-2.svg",
+        "Cjem-t13-3.svg",
+        "Cjem-t13-4.svg"
+      ]
+    },
+    {
+      "aux": 15,
+      "examples": [
+        "Cjem-t15-1.svg"
+      ]
+    },
+    {
+      "aux": 16,
+      "examples": [
+        "Cjem-t16-1.svg"
+      ]
+    }
+  ],
+  "U": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-u0-1.svg",
+        "Cjem-u0-2.svg",
+        "Cjem-u0-3.svg",
+        "Cjem-u0-4.svg",
+        "Cjem-u0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-u1-1.svg",
+        "Cjem-u1-2.svg",
+        "Cjem-u1-3.svg",
+        "Cjem-u1-4.svg",
+        "Cjem-u1-6.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-u2-1.svg",
+        "Cjem-u2-2.svg",
+        "Cjem-u2-3.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-u3-1.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-u4-1.svg",
+        "Cjem-u4-2.svg",
+        "Cjem-u4-3.svg",
+        "Cjem-u4-4.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-u5-1.svg",
+        "Cjem-u5-2.svg"
+      ]
+    }
+  ],
+  "V": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-v0-1.svg",
+        "Cjem-v0-2.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-v1-1.svg",
+        "Cjem-v1-2.svg",
+        "Cjem-v1-3.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-v2-1.svg",
+        "Cjem-v2-2.svg",
+        "Cjem-v2-3.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-v4-1.svg",
+        "Cjem-v4-2.svg"
+      ]
+    },
+    {
+      "aux": 5,
+      "examples": [
+        "Cjem-v5-1.svg",
+        "Cjem-v5-2.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-v6-1.svg",
+        "Cjem-v6-2.svg",
+        "Cjem-v6-3.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-v7-1.svg"
+      ]
+    },
+    {
+      "aux": 8,
+      "examples": [
+        "Cjem-v8-1.svg",
+        "Cjem-v8-2.svg",
+        "Cjem-v8-3.svg",
+        "Cjem-v8-4.svg"
+      ]
+    },
+    {
+      "aux": 9,
+      "examples": [
+        "Cjem-v9-1.svg",
+        "Cjem-v9-2.svg",
+        "Cjem-v9-3.svg",
+        "Cjem-v9-4.svg",
+        "Cjem-v9-5.svg"
+      ]
+    },
+    {
+      "aux": 10,
+      "examples": [
+        "Cjem-v10-1.svg",
+        "Cjem-v10-2.svg",
+        "Cjem-v10-3.svg",
+        "Cjem-v10-4.svg",
+        "Cjem-v10-5.svg"
+      ]
+    }
+  ],
+  "W": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-w0-1.svg",
+        "Cjem-w0-2.svg",
+        "Cjem-w0-3.svg",
+        "Cjem-w0-4.svg",
+        "Cjem-w0-5.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-w1-1.svg",
+        "Cjem-w1-2.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-w2-1.svg",
+        "Cjem-w2-2.svg",
+        "Cjem-w2-3.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-w3-1.svg",
+        "Cjem-w3-2.svg",
+        "Cjem-w3-3.svg",
+        "Cjem-w3-4.svg",
+        "Cjem-w3-5.svg"
+      ]
+    }
+  ],
+  "Y": [
+    {
+      "aux": 0,
+      "examples": [
+        "Cjem-y0-1.svg",
+        "Cjem-y0-2.svg"
+      ]
+    },
+    {
+      "aux": 1,
+      "examples": [
+        "Cjem-y1-1.svg",
+        "Cjem-y1-2.svg",
+        "Cjem-y1-3.svg"
+      ]
+    },
+    {
+      "aux": 2,
+      "examples": [
+        "Cjem-y2-1.svg",
+        "Cjem-y2-2.svg",
+        "Cjem-y2-3.svg"
+      ]
+    },
+    {
+      "aux": 3,
+      "examples": [
+        "Cjem-y3-1.svg"
+      ]
+    },
+    {
+      "aux": 4,
+      "examples": [
+        "Cjem-y4-1.svg"
+      ]
+    },
+    {
+      "aux": 6,
+      "examples": [
+        "Cjem-y6-1.svg",
+        "Cjem-y6-3.svg",
+        "Cjem-y6-4.svg",
+        "Cjem-y6-5.svg",
+        "Cjem-y6-7.svg"
+      ]
+    },
+    {
+      "aux": 7,
+      "examples": [
+        "Cjem-y7-1.svg",
+        "Cjem-y7-2.svg",
+        "Cjem-y7-3.svg",
+        "Cjem-y7-4.svg",
+        "Cjem-y7-5.svg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+輔助字形範例 SVG 圖檔 — 來源與授權
+=================================
+
+本目錄底下的所有 Cjem-*.svg 圖檔，皆來自 Wikimedia Commons，由使用者
+Cangjie6 製作並上傳，採用 CC0 1.0 通用公有領域貢獻宣告
+(Creative Commons CC0 1.0 Universal Public Domain Dedication) 釋出。
+
+依據此宣告，作者已在全世界放棄其對該作品所擁有的著作權及所有相關
+相似的法律權利，從而將該作品貢獻至公有領域。複製、修改、分發、商業
+使用，皆無須請求授權。
+
+本專案保留此檔以表達對原作者整理工作的致謝。
+
+來源整理頁面：
+  https://zh.wikibooks.org/wiki/倉頡輸入法/輔助字形
+
+原始檔案分類（Wikimedia Commons）：
+  https://commons.wikimedia.org/wiki/Category:Cangjie_input_method
+
+貢獻者頁面：
+  https://commons.wikimedia.org/wiki/User:Cangjie6
+
+CC0 1.0 條款全文：
+  https://creativecommons.org/publicdomain/zero/1.0/deed.zh_TW
