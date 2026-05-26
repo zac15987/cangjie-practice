@@ -59,7 +59,10 @@ export function mountMenu(root, { section, onSelect, onSwitchSection, onOpenSett
   root.innerHTML = `
     <section class="menu">
       <header class="menu-header">
-        <h1>24 字母練習</h1>
+        <div class="menu-title-group">
+          <img class="menu-logo" src="./favicon.svg" alt="" width="64" height="64" />
+          <h1>倉頡練習</h1>
+        </div>
         <button class="settings-btn" type="button" aria-label="設定">⚙</button>
       </header>
       <p class="menu-intro">選擇分組與練習關卡。所有關卡自由選，無解鎖限制。</p>

@@ -48,6 +48,8 @@ button:disabled { color: var(--muted); cursor: not-allowed; opacity: 0.5; }
   margin-bottom: 0.5rem;
 }
 .menu-header h1 { margin: 0; font-size: 1.5rem; letter-spacing: 0.05em; }
+.menu-title-group { display: flex; align-items: center; gap: 0.6rem; }
+.menu-logo { display: block; width: 64px; height: 64px; }
 .settings-btn { font-size: 1.2rem; padding: 0.4rem 0.7rem; }
 
 .menu-intro { color: var(--muted); font-size: 0.9rem; margin: 0 0 1rem; }
