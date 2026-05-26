@@ -2,6 +2,8 @@
 
 線上倉頡輸入法練習工具，目前對應 3 代倉頡（Windows 預設版本）。
 
+線上版本：<https://cj.zacfuse.dev/>
+
 ## 練習內容
 
 首頁可在兩個 section 之間切換：
@@ -45,5 +47,5 @@ npm run build
 
 ## 授權
 
-- **程式碼**：[MIT License](LICENSE)，© 2026 Chih Hao Yeh。
+- **程式碼**：[MIT License](LICENSE)，© 2026 zac15987。
 - **輔助字形 SVG**（`public/auxiliary/*.svg`）：[CC0 1.0 公有領域](https://creativecommons.org/publicdomain/zero/1.0/deed.zh_TW)，原始貢獻者為 Wikimedia Commons 使用者 Cangjie6，詳見 `public/auxiliary/LICENSE-AUX.txt`。
