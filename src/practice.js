@@ -1,13 +1,19 @@
-import { LESSONS, STAGES, STAGE_KEY, buildSequence, nextStageOf } from './engine.js';
+import {
+  lessonsFor,
+  stagesFor,
+  STAGE_KEY,
+  buildSequence,
+  nextStageOf,
+} from './engine.js';
 import { getSettings } from './settings.js';
 import { load, save } from './storage.js';
 import { playError } from './audio.js';
 
 const VISITED_KEY = 'visited';
 
-function markVisited(lessonId, stageId) {
+function markVisited(lessonId, stageId, section) {
   const visited = load(VISITED_KEY, {});
-  visited[STAGE_KEY(lessonId, stageId)] = true;
+  visited[STAGE_KEY(lessonId, stageId, section)] = true;
   save(VISITED_KEY, visited);
 }
 
@@ -41,15 +47,15 @@ function kogasa(cv) {
 // Need enough per-second samples for the CV to be meaningful.
 const MIN_SECONDS_FOR_CONSISTENCY = 3;
 
-export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
-  const lesson = LESSONS[lessonId];
-  const stage = STAGES.find((s) => s.id === stageId);
+export function mountPractice(root, { lessonId, stageId, section = 'radical', onExit, onNavigate }) {
+  const lesson = lessonsFor(section)[lessonId];
+  const stage = stagesFor(lesson, section).find((s) => s.id === stageId);
   const settings = getSettings();
 
-  markVisited(lessonId, stageId);
+  markVisited(lessonId, stageId, section);
 
-  let seq = buildSequence({ lessonId, stageId, settings });
-  const nextTarget = nextStageOf(lessonId, stageId);
+  let seq = buildSequence({ lessonId, stageId, settings, section });
+  const nextTarget = nextStageOf(lessonId, stageId, section);
   let cursorLine = 0;
   let cursorCol = 0;
   let hintShown = false;
@@ -154,7 +160,16 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
       line.forEach((item, ci) => {
         const cell = document.createElement('span');
         cell.className = 'char';
-        cell.textContent = item.radical;
+        if (item.svg) {
+          cell.classList.add('char--svg');
+          const img = document.createElement('img');
+          img.src = `auxiliary/${item.svg}`;
+          img.alt = item.key;
+          img.className = 'char-img';
+          cell.appendChild(img);
+        } else {
+          cell.textContent = item.radical;
+        }
         cell.dataset.line = li;
         cell.dataset.col = ci;
         row.appendChild(cell);
@@ -245,7 +260,8 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
 
   function updateHintForCursor() {
     if (hintShown && currentItem()) {
-      hintKeyEl.textContent = currentItem().key;
+      const item = currentItem();
+      hintKeyEl.textContent = section === 'aux' ? item.radical : item.key;
       hintEl.hidden = false;
     } else {
       hintEl.hidden = true;
@@ -446,7 +462,7 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
 
   function onRegenerate() {
     if (!seq.canRegenerate) return;
-    seq = buildSequence({ lessonId, stageId, settings });
+    seq = buildSequence({ lessonId, stageId, settings, section });
     startRun();
   }
 
@@ -467,7 +483,7 @@ export function mountPractice(root, { lessonId, stageId, onExit, onNavigate }) {
   }
   function navigate(target) {
     cleanup();
-    onNavigate(target);
+    onNavigate({ ...target, section });
   }
 
   const nextBtn = root.querySelector('[data-action="next"]');
