@@ -8,6 +8,17 @@ const SECTION_LABELS = {
   aux: '輔助字形',
 };
 
+const SECTION_REFS = {
+  radical: {
+    href: 'https://zh.wikibooks.org/wiki/%E5%80%89%E9%A0%A1%E8%BC%B8%E5%85%A5%E6%B3%95/%E5%80%89%E9%A0%A1%E5%AD%97%E6%AF%8D%E8%88%87%E9%8D%B5%E4%BD%8D',
+    title: '倉頡輸入法/倉頡字母與鍵位',
+  },
+  aux: {
+    href: 'https://zh.wikibooks.org/wiki/%E5%80%89%E9%A0%A1%E8%BC%B8%E5%85%A5%E6%B3%95/%E8%BC%94%E5%8A%A9%E5%AD%97%E5%BD%A2',
+    title: '倉頡輸入法/輔助字形',
+  },
+};
+
 export function mountMenu(root, { section, onSelect, onSwitchSection, onOpenSettings }) {
   const visited = load(VISITED_KEY, {});
   const lessons = lessonsFor(section);
@@ -43,6 +54,8 @@ export function mountMenu(root, { section, onSelect, onSwitchSection, onOpenSett
     return `<button type="button" class="section-tab${active}" data-section="${id}">${label}</button>`;
   }).join('');
 
+  const ref = SECTION_REFS[section];
+
   root.innerHTML = `
     <section class="menu">
       <header class="menu-header">
@@ -51,6 +64,9 @@ export function mountMenu(root, { section, onSelect, onSwitchSection, onOpenSett
       </header>
       <p class="menu-intro">選擇分組與練習關卡。所有關卡自由選，無解鎖限制。</p>
       <nav class="section-toggle" role="tablist" aria-label="練習類型">${sectionToggle}</nav>
+      <p class="menu-reference">
+        建議先讀過這篇教學再來練習，效果會更好：<a href="${ref.href}" target="_blank" rel="noopener noreferrer">${ref.title}</a>
+      </p>
       ${lessonBlocks}
       <footer class="menu-footer">
         <div class="menu-version">v${import.meta.env.VITE_APP_VERSION}</div>
