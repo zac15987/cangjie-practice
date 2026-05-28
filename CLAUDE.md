@@ -44,8 +44,8 @@ The app has two parallel practice **sections**, selected by a top-level toggle o
 - Radical cell shape: `{ key, radical }` — passed directly from `lesson.keys`.
 
 **Auxiliary mode:**
-- **`AUX_LESSONS`**: 5 lessons mirroring `LESSONS`' grouping. Each lesson additionally carries `poolBase` (aux index 0 examples), `poolVariants` (aux index ≥ 1), and `poolMixed` (both) — flat arrays of cells already expanded from `src/data/auxiliary.json`.
-- **`AUX_STAGES`**: 3 stages — `auxBase` / `auxVariants` / `auxMixed`, all randomized.
+- **`AUX_LESSONS`**: 5 lessons mirroring `LESSONS`' grouping. Each lesson additionally carries a single `pool` — a flat array of every example cell across every aux index, expanded from `src/data/auxiliary.json`.
+- **`AUX_STAGES`**: a single stage `all` (display name `練習`), randomized. The base-vs-variant split was removed because the upstream Wikibooks/Cangjie6 naming is not consistent (e.g. key `O` 人 has no `aux: 0` group at all — its base forms live at `aux: 1`–`5`), so filtering by aux index reliably drops radicals from the pool.
 - Aux cell shape: `{ key, radical, svg }`. `svg` is a filename like `Cjem-a0-1.svg` resolved against `public/auxiliary/`; `radical` is shown only by the hint feature (the displayed glyph is the SVG).
 
 **Shared API (all take an optional `section` param, default `'radical'`):**
@@ -63,8 +63,8 @@ Finish-overlay keyboard shortcuts (only active when `finished === true`): R = re
 
 `src/storage.js` is a thin localStorage wrapper that auto-prefixes every key with `cangjie:`. Keys in use:
 
-- `cangjie:visited` — `{ "L0.warmup": true, "aux:L0.auxBase": true, ... }`. Radical visits use the bare `L<id>.<stage>` form; aux visits use the `aux:L<id>.<stage>` prefix. The two namespaces cannot collide, so toggling sections preserves both progress sets.
-- `cangjie:settings` — radical row counts (`warmupRepeat`, `forwardReverseRounds`, `shuffleRows`, `crossoverRows`) plus aux row counts (`auxBaseRows`, `auxVariantsRows`, `auxMixedRows`).
+- `cangjie:visited` — `{ "L0.warmup": true, "aux:L0.all": true, ... }`. Radical visits use the bare `L<id>.<stage>` form; aux visits use the `aux:L<id>.<stage>` prefix. The two namespaces cannot collide, so toggling sections preserves both progress sets. Older clients may have orphaned `aux:L*.auxBase` / `auxVariants` / `auxMixed` entries from the previous three-stage layout; they are ignored by the current code.
+- `cangjie:settings` — radical row counts (`warmupRepeat`, `forwardReverseRounds`, `shuffleRows`, `crossoverRows`) plus the aux row count (`auxRows`). Older clients may have orphaned `auxBaseRows` / `auxVariantsRows` / `auxMixedRows` entries; they are ignored.
 - `cangjie:section` — `'radical' | 'aux'`, the last-selected section toggle.
 
 Visited is marked the moment the practice screen mounts (not on completion). Settings have bounds; always go through `getSettings()` / `updateSettings()`.
@@ -84,6 +84,6 @@ Visited is marked the moment the practice screen mounts (not on completion). Set
 - UI copy is in Traditional Chinese (zh-Hant); code, identifiers, and CLAUDE.md itself are in English
 - Avoid adding frameworks or build tooling — the project deliberately stays vanilla + Vite
 - When adding a radical stage: update `STAGES`, the if-else dispatch in `buildSequence`'s radical branch, and the corresponding field in `settings.js`
-- When adding an aux stage: update `AUX_STAGES`, the if-else dispatch in `buildAuxSequence`, and add a row-count field in `settings.js` (default 4, bounds 1–10)
+- Aux mode currently has a single combined stage by design — do not re-introduce a base-vs-variant split without first checking every letter in `auxiliary.json` for consistent `aux: 0` usage (see the note in **Core data model** above; key `O` already breaks this)
 - When adding a lesson: either edit `src/data/radicals.json` or append a synthetic entry (the "all 24" lesson is the reference pattern). `AUX_LESSONS` rebuilds automatically from the same `radicals.json` categories plus `auxiliary.json`
 - New section types follow the same pattern: thread `section` through main → menu → practice, give it its own `LESSONS_*` / `STAGES_*` arrays and a buildSequence branch, and a `STAGE_KEY` prefix to keep visited state isolated
