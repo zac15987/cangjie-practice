@@ -23,21 +23,16 @@ export const STAGES = [
 ];
 
 function buildAuxPools(letters) {
-  const base = [];
-  const variants = [];
+  const pool = [];
   for (const { key, radical } of letters) {
     const groups = auxiliaryData[key] || [];
     for (const group of groups) {
-      const cells = group.examples.map((svg) => ({ key, radical, svg }));
-      if (group.aux === 0) base.push(...cells);
-      else variants.push(...cells);
+      for (const svg of group.examples) {
+        pool.push({ key, radical, svg });
+      }
     }
   }
-  return {
-    poolBase: base,
-    poolVariants: variants,
-    poolMixed: [...base, ...variants],
-  };
+  return { pool };
 }
 
 export const AUX_LESSONS = (() => {
@@ -60,9 +55,7 @@ export const AUX_LESSONS = (() => {
 })();
 
 export const AUX_STAGES = [
-  { id: 'auxBase', name: '基本形' },
-  { id: 'auxVariants', name: '變形' },
-  { id: 'auxMixed', name: '混合' },
+  { id: 'all', name: '練習' },
 ];
 
 export const STAGE_KEY = (lessonId, stageId, section = 'radical') =>
@@ -135,29 +128,16 @@ function crossoverPool(lessonId) {
 function buildAuxSequence({ lessonId, stageId, settings }) {
   const lesson = AUX_LESSONS[lessonId];
   if (!lesson) throw new Error(`unknown aux lesson ${lessonId}`);
+  if (stageId !== 'all') throw new Error(`unknown aux stage ${stageId}`);
 
-  let pool;
-  let rows;
-  if (stageId === 'auxBase') {
-    pool = lesson.poolBase;
-    rows = settings.auxBaseRows;
-  } else if (stageId === 'auxVariants') {
-    pool = lesson.poolVariants;
-    rows = settings.auxVariantsRows;
-  } else if (stageId === 'auxMixed') {
-    pool = lesson.poolMixed;
-    rows = settings.auxMixedRows;
-  } else {
-    throw new Error(`unknown aux stage ${stageId}`);
-  }
-
+  const pool = lesson.pool;
   if (pool.length === 0) {
     return { lines: [], canRegenerate: false };
   }
 
   const lineLength = lesson.keys.length;
   return {
-    lines: buildRandomLines(pool, rows, lineLength),
+    lines: buildRandomLines(pool, settings.auxRows, lineLength),
     canRegenerate: true,
   };
 }

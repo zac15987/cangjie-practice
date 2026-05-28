@@ -6,18 +6,14 @@ const DEFAULTS = {
   forwardReverseRounds: 1,
   shuffleRows: 4,
   crossoverRows: 3,
-  auxBaseRows: 4,
-  auxVariantsRows: 4,
-  auxMixedRows: 4,
+  auxRows: 4,
 };
 const BOUNDS = {
   warmupRepeat: { min: 3, max: 20 },
   forwardReverseRounds: { min: 1, max: 10 },
   shuffleRows: { min: 1, max: 10 },
   crossoverRows: { min: 1, max: 10 },
-  auxBaseRows: { min: 1, max: 10 },
-  auxVariantsRows: { min: 1, max: 10 },
-  auxMixedRows: { min: 1, max: 10 },
+  auxRows: { min: 1, max: 10 },
 };
 
 export function getSettings() {
@@ -68,18 +64,8 @@ export function mountSettings(root, { onBack }) {
           <span class="hint">範圍 1 – 10</span>
         </label>
         <label class="field">
-          <span class="label-text">輔助字形 基本形 行數</span>
-          <input type="number" name="auxBaseRows" min="1" max="10" step="1" value="${s.auxBaseRows}" />
-          <span class="hint">範圍 1 – 10</span>
-        </label>
-        <label class="field">
-          <span class="label-text">輔助字形 變形 行數</span>
-          <input type="number" name="auxVariantsRows" min="1" max="10" step="1" value="${s.auxVariantsRows}" />
-          <span class="hint">範圍 1 – 10</span>
-        </label>
-        <label class="field">
-          <span class="label-text">輔助字形 混合 行數</span>
-          <input type="number" name="auxMixedRows" min="1" max="10" step="1" value="${s.auxMixedRows}" />
+          <span class="label-text">輔助字形 行數</span>
+          <input type="number" name="auxRows" min="1" max="10" step="1" value="${s.auxRows}" />
           <span class="hint">範圍 1 – 10</span>
         </label>
         <p class="settings-note">設定會立即儲存，下次練習生效。</p>
