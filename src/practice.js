@@ -104,6 +104,9 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
         tabindex="-1"
       />
       <div class="hint-row" data-hint hidden>對應鍵：<strong data-hint-key></strong></div>
+      <div class="peek-overlay" data-peek hidden>
+        <div class="peek-card"><strong data-peek-content></strong></div>
+      </div>
       <div class="controls">
         <button type="button" data-action="hint">顯示提示</button>
         <button type="button" data-action="regenerate" ${seq.canRegenerate ? '' : 'disabled'}>換新隨機批次</button>
@@ -133,6 +136,8 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
   const sequenceEl = root.querySelector('[data-sequence]');
   const hintEl = root.querySelector('[data-hint]');
   const hintKeyEl = root.querySelector('[data-hint-key]');
+  const peekEl = root.querySelector('[data-peek]');
+  const peekContentEl = root.querySelector('[data-peek-content]');
   const statProgress = root.querySelector('[data-stat="progress"]');
   const statCpm = root.querySelector('[data-stat="cpm"]');
   const statRaw = root.querySelector('[data-stat="raw"]');
@@ -394,6 +399,11 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
   }
 
   function onKeyDown(e) {
+    if (e.key === 'Alt') {
+      e.preventDefault(); // 防止 Windows 把焦點移到視窗選單列
+      showPeek();
+      return;
+    }
     if (e.ctrlKey || e.metaKey || e.altKey) return;
 
     if (finished) {
@@ -417,6 +427,10 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
     if (document.activeElement === captureInput) return;
     e.preventDefault();
     processKey(key);
+  }
+
+  function onKeyUp(e) {
+    if (e.key === 'Alt') hidePeek();
   }
 
   function onCaptureBeforeInput(e) {
@@ -449,11 +463,27 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
     updateHintForCursor();
   }
 
+  function showPeek() {
+    if (finished) return;
+    const item = currentItem();
+    if (!item) return;
+    peekContentEl.textContent = section === 'aux' ? item.radical : item.key;
+    peekEl.hidden = false;
+  }
+  function hidePeek() {
+    peekEl.hidden = true;
+  }
+
   function onVisibilityChange() {
-    if (document.visibilityState === 'hidden') pauseRun();
-    else resumeRun();
+    if (document.visibilityState === 'hidden') {
+      hidePeek();
+      pauseRun();
+    } else {
+      resumeRun();
+    }
   }
   function onWindowBlur() {
+    hidePeek();
     pauseRun();
   }
   function onWindowFocus() {
@@ -469,6 +499,7 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
   function cleanup() {
     stopAllTimers();
     window.removeEventListener('keydown', onKeyDown);
+    window.removeEventListener('keyup', onKeyUp);
     window.removeEventListener('blur', onWindowBlur);
     window.removeEventListener('focus', onWindowFocus);
     document.removeEventListener('visibilitychange', onVisibilityChange);
@@ -499,6 +530,7 @@ export function mountPractice(root, { lessonId, stageId, section = 'radical', on
   captureInput.addEventListener('beforeinput', onCaptureBeforeInput);
   captureInput.addEventListener('input', onCaptureInput);
   window.addEventListener('keydown', onKeyDown);
+  window.addEventListener('keyup', onKeyUp);
   window.addEventListener('blur', onWindowBlur);
   window.addEventListener('focus', onWindowFocus);
   document.addEventListener('visibilitychange', onVisibilityChange);
